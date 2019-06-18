@@ -16,7 +16,7 @@ Ready-to-use image for SSR rendering based on headless Chrome, [a.k.a Rendertron
 ## Usage
 
 ```
-docker run -it --rm -p 3000:300 dockette/rendertron
+docker run -it --rm -p 3000:3000 dockette/rendertron
 ```
 
 ![Screenshot](.docs/screenshot.png)
