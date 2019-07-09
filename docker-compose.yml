@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  rendertron: 
+    image: dockette/rendertron
+    ports:
+      - 3000:3000
+
+  proxy:
+    image: dockette/rendertron:proxy
+    ports:
+      - 4000:4000
+    environment:
+      - NGINX_PROXY=http://host.docker.internal:3000
+    volumes:
+      - ./tmp:/data
