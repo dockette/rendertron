@@ -1,0 +1,7 @@
+version: '3.5'
+services:
+  tracer:
+    image: dockette/rendertron:tracer
+    environment:
+      - TRACER_SRC_SITEMAP_1=https://barth-go.digital.cz/sitemaps/pages-1.xml
+      - TRACER_SERVER=http://localhost:4000/render/

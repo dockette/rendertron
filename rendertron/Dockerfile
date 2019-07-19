@@ -5,7 +5,7 @@ RUN apt update && apt dist-upgrade -y && \
     && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list && \
     apt-get update && apt-get -y install google-chrome-stable
 
-ADD /rendertron/ /srv
+ADD ./ /srv
 
 RUN npm --prefix /srv install && \
     npm --prefix /srv run build && \
