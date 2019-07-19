@@ -1,0 +1,16 @@
+{
+  "require": {
+    "guzzlehttp/guzzle": "^6.3.3",
+    "contributte/tracy": "^0.4.0",
+    "contributte/utils": "^0.4.0",
+    "contributte/monolog": "^0.3.0"
+  },
+  "require-dev": {
+    "contributte/dev": "^0.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dockette\\Rendertron\\Tracer\\": "src"
+    }
+  }
+}
