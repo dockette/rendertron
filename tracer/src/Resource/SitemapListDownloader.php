@@ -4,7 +4,7 @@ namespace Dockette\Rendertron\Tracer\Resource;
 
 use GuzzleHttp\Client;
 
-final class SitemapDownloader implements Downloader
+final class SitemapListDownloader implements Downloader
 {
 
 	/** @var Client */
@@ -24,10 +24,16 @@ final class SitemapDownloader implements Downloader
 		$res = $this->client->request('GET', $this->url);
 		$xml = simplexml_load_string($res->getBody()->getContents());
 
-		// Collect all urls from sitemap
+		// Collect all sitemap lists
+		$lists = [];
+		foreach ($xml->sitemap as $node) {
+			$lists[] = $node->loc->__toString();
+		}
+
+		// Collect all urls from sitemap list
 		$urls = [];
-		foreach ($xml->url as $node) {
-			$urls[] = $node->loc->__toString();
+		foreach ($lists as $list) {
+			array_push($urls, ...(new SitemapDownloader($this->client, $list))->download());
 		}
 
 		// Uniqueness

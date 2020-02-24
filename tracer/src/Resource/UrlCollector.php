@@ -8,7 +8,7 @@ final class UrlCollector
 	/** @var Downloader[] */
 	private $downloaders = [];
 
-	public function addDownloader(SitemapDownloader $downloader): void
+	public function addDownloader(Downloader $downloader): void
 	{
 		$this->downloaders[] = $downloader;
 	}

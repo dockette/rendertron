@@ -18,11 +18,14 @@ $env = getenv();
 // Setup tracer
 $tracer = new Tracer([
 	'server' => $env['TRACER_SERVER'] ?? 'http://localhost:4000/render/',
+	'concurrency' => min(1, intval($env['TRACER_CONCURRENCY'] ?? 5)),
 ]);
 
 foreach ($env as $key => $value) {
 	if (Strings::startsWith($key, 'TRACER_SRC_SITEMAP')) {
 		$tracer->addResourceSitemap($value);
+	} elseif (Strings::startsWith($key, 'TRACER_SRC_SITEMAP_LIST')) {
+		$tracer->addResourceSitemapList($value);
 	}
 }
 

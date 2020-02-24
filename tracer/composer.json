@@ -1,12 +1,15 @@
 {
   "require": {
-    "guzzlehttp/guzzle": "^6.3.3",
-    "contributte/tracy": "^0.4.0",
-    "contributte/utils": "^0.4.0",
-    "contributte/monolog": "^0.3.0"
+    "php": "^7.3",
+    "ext-simplexml": "*",
+    "guzzlehttp/guzzle": "^6.5.2",
+    "contributte/tracy": "^0.4.1",
+    "contributte/utils": "^0.4.2",
+    "contributte/monolog": "^0.4.1"
   },
   "require-dev": {
-    "contributte/dev": "^0.1.0"
+    "contributte/dev": "^0.1.0",
+    "ninjify/nunjuck": "^0.3.0"
   },
   "autoload": {
     "psr-4": {

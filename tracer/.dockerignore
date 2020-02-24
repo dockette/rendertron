@@ -1,2 +1,8 @@
-vendor
-var
+# Composer
+/vendor
+
+# Temp
+/var
+
+# Tests
+/tests
