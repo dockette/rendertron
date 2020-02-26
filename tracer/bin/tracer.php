@@ -24,7 +24,8 @@ $tracer = new Tracer([
 foreach ($env as $key => $value) {
 	if (Strings::startsWith($key, 'TRACER_SRC_SITEMAP')) {
 		$tracer->addResourceSitemap($value);
-	} elseif (Strings::startsWith($key, 'TRACER_SRC_SITEMAP_LIST')) {
+	}
+	if (Strings::startsWith($key, 'TRACER_SRC_SITEMAP_LIST')) {
 		$tracer->addResourceSitemapList($value);
 	}
 }
