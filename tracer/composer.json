@@ -2,7 +2,7 @@
   "require": {
     "php": "^7.3",
     "ext-simplexml": "*",
-    "guzzlehttp/guzzle": "^6.5.2",
+    "guzzlehttp/guzzle": "^7.3.0",
     "contributte/tracy": "^0.4.1",
     "contributte/utils": "^0.4.2",
     "contributte/monolog": "^0.4.1"
