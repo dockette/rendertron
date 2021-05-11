@@ -3,7 +3,7 @@
     "php": "^7.3",
     "ext-simplexml": "*",
     "guzzlehttp/guzzle": "^7.3.0",
-    "contributte/tracy": "^0.4.1",
+    "contributte/tracy": "^0.5.1",
     "contributte/utils": "^0.4.2",
     "contributte/monolog": "^0.4.1"
   },
