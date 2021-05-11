@@ -8,7 +8,7 @@
     "contributte/monolog": "^0.4.1"
   },
   "require-dev": {
-    "contributte/dev": "^0.1.0",
+    "contributte/dev": "^0.3",
     "ninjify/nunjuck": "^0.3.0"
   },
   "autoload": {
