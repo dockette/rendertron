@@ -26,7 +26,7 @@
     "@google-cloud/datastore": "^4.1.1",
     "@types/fs-extra": "^7.0.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
-    "chrome-launcher": "^0.10.7",
+    "chrome-launcher": "^0.13.4",
     "chrome-remote-interface": "^0.27.2",
     "fs-extra": "^8.0.1",
     "koa": "^2.7.0",
