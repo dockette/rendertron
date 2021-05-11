@@ -1,0 +1,16 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/rendertron"
+  schedule:
+    interval: daily
+  labels:
+    - "dependencies"
+    - "automerge"
+- package-ecosystem: composer
+  directory: "/tracer"
+  schedule:
+    interval: daily
+  labels:
+    - "dependencies"
+    - "automerge"
