@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12b4299622eb4b2f5232b0a954417e41",
+    "content-hash": "717ba4abff9ed24f8b98fe4c62631148",
     "packages": [
         {
             "name": "contributte/di",
@@ -1316,55 +1316,33 @@
     "packages-dev": [
         {
             "name": "contributte/dev",
-            "version": "v0.1",
+            "version": "v0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contributte/dev.git",
-                "reference": "ec46ddfce08cd45960ae40efc5872a18e968d6a2"
+                "reference": "2f583ab44c082d4fd09db57db3906cb0c48706e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contributte/dev/zipball/ec46ddfce08cd45960ae40efc5872a18e968d6a2",
-                "reference": "ec46ddfce08cd45960ae40efc5872a18e968d6a2",
+                "url": "https://api.github.com/repos/contributte/dev/zipball/2f583ab44c082d4fd09db57db3906cb0c48706e4",
+                "reference": "2f583ab44c082d4fd09db57db3906cb0c48706e4",
                 "shasum": ""
             },
             "require": {
-                "php": ">= 5.6"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "ninjify/nunjuck": "^0.1.4",
-                "ninjify/qa": "^0.3.3"
+                "ninjify/nunjuck": "^0.4",
+                "ninjify/qa": "^0.12"
             },
             "type": "library",
             "extra": {
-                "ninjify": {
-                    "qa": {
-                        "codesniffer": {
-                            "ruleset": "nette",
-                            "folders": [
-                                "src",
-                                "tests"
-                            ]
-                        },
-                        "codefixer": {
-                            "ruleset": "nette",
-                            "folders": [
-                                "src",
-                                "tests"
-                            ]
-                        },
-                        "linter": {
-                            "folders": [
-                                "src",
-                                "tests"
-                            ]
-                        }
-                    }
+                "branch-alias": {
+                    "dev-master": "0.4.x-dev"
                 }
             },
             "autoload": {
                 "files": [
-                    "src/functions.php",
                     "src/shortcuts.php"
                 ]
             },
@@ -1375,7 +1353,7 @@
             "authors": [
                 {
                     "name": "Milan Felix Sulc",
-                    "homepage": "https://jfx.cz"
+                    "homepage": "https://f3l1x.io"
                 }
             ],
             "description": "Tools for development",
@@ -1385,7 +1363,11 @@
                 "nette",
                 "shortcuts"
             ],
-            "time": "2017-03-12T18:43:26+00:00"
+            "support": {
+                "issues": "https://github.com/contributte/dev/issues",
+                "source": "https://github.com/contributte/dev/tree/v0.3"
+            },
+            "time": "2020-12-13T18:46:03+00:00"
         },
         {
             "name": "nette/tester",
