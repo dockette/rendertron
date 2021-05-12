@@ -473,9 +473,9 @@
     "@types/node" "*"
 
 "@types/google-cloud__datastore@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@types/google-cloud__datastore/-/google-cloud__datastore-1.3.3.tgz#188f6484768e262349d4f5dffea96ef95dd36b97"
-  integrity sha512-24My3OoHrOvVSAFJ1XRTu7HamEliKXFhszyxVIc/uC/OmU8NGOPGTbkkDngLAOk+qLA0i+bD1CQ5D6zzSpL+ew==
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@types/google-cloud__datastore/-/google-cloud__datastore-1.3.5.tgz#c89932d12fc471d937afad6aaf9203647a14b126"
+  integrity sha512-xhNo23LYM5k3HphHwaCNZP7UJB/YeAhM9z9UmqNx/hOsXCF5DR8hhJH4LYds3mE1FbBR9UBHOuYtqwBzSyZjAw==
   dependencies:
     "@types/node" "*"
 
