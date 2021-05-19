@@ -45,4 +45,4 @@ jobs:
           context: ${{ matrix.context  }}
           push: true
           tags: dockette/rendertron:${{ matrix.tag }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64 # linux/arm64
