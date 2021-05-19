@@ -14,8 +14,8 @@
  * the License.
  */
 
-import * as express from 'express';
-import * as request from 'request';
+import express from 'express';
+import request from 'request';
 
 /**
  * A default set of user agent patterns for bots/crawlers that do not perform
@@ -45,11 +45,47 @@ export const botUserAgents = [
  * proxied.
  */
 const staticFileExtensions = [
-  'ai', 'avi', 'css', 'dat', 'dmg', 'doc', 'doc', 'exe', 'flv',
-  'gif', 'ico', 'iso', 'jpeg', 'jpg', 'js', 'less', 'm4a', 'm4v',
-  'mov', 'mp3', 'mp4', 'mpeg', 'mpg', 'pdf', 'png', 'ppt', 'psd',
-  'rar', 'rss', 'svg', 'swf', 'tif', 'torrent', 'ttf', 'txt', 'wav',
-  'wmv', 'woff', 'xls', 'xml', 'zip',
+  'ai',
+  'avi',
+  'css',
+  'dat',
+  'dmg',
+  'doc',
+  'doc',
+  'exe',
+  'flv',
+  'gif',
+  'ico',
+  'iso',
+  'jpeg',
+  'jpg',
+  'js',
+  'less',
+  'm4a',
+  'm4v',
+  'mov',
+  'mp3',
+  'mp4',
+  'mpeg',
+  'mpg',
+  'pdf',
+  'png',
+  'ppt',
+  'psd',
+  'rar',
+  'rss',
+  'svg',
+  'swf',
+  'tif',
+  'torrent',
+  'ttf',
+  'txt',
+  'wav',
+  'wmv',
+  'woff',
+  'xls',
+  'xml',
+  'zip',
 ];
 
 /**
@@ -82,6 +118,24 @@ export interface Options {
    * Millisecond timeout for proxy requests. Defaults to 11000 milliseconds.
    */
   timeout?: number;
+
+  /**
+   * If a forwarded host header is found and matches one of the hosts in this
+   * array, then that host will be used for the request to the rendertron server
+   * instead of the actual host of the request.
+   * This is usedful if this middleware is running on a different host
+   * which is proxied behind the actual site, and the rendertron server should
+   * request the main site.
+   */
+  allowedForwardedHosts?: string[];
+
+  /**
+   * Header used to determine the forwarded host that should be used when
+   * building the URL to be rendered. Only applicable if `allowedForwardedHosts`
+   * is not empty.
+   * Defaults to `"X-Forwarded-Host"`.
+   */
+  forwardedHostHeader?: string;
 }
 
 /**
@@ -98,22 +152,34 @@ export function makeMiddleware(options: Options): express.Handler {
   }
   const userAgentPattern =
     options.userAgentPattern || new RegExp(botUserAgents.join('|'), 'i');
-  const excludeUrlPattern = options.excludeUrlPattern ||
+  const excludeUrlPattern =
+    options.excludeUrlPattern ||
     new RegExp(`\\.(${staticFileExtensions.join('|')})$`, 'i');
   const injectShadyDom = !!options.injectShadyDom;
   // The Rendertron service itself has a hard limit of 10 seconds to render, so
   // let's give a little more time than that by default.
-  const timeout = options.timeout || 11000;  // Milliseconds.
+  const timeout = options.timeout || 11000; // Milliseconds.
+  const allowedForwardedHosts = options.allowedForwardedHosts || [];
+  const forwardedHostHeader = allowedForwardedHosts.length
+    ? options.forwardedHostHeader || 'X-Forwarded-Host'
+    : null;
 
   return function rendertronMiddleware(req, res, next) {
     const ua = req.headers['user-agent'];
-    if (ua === undefined || !userAgentPattern.test(ua) ||
-      excludeUrlPattern.test(req.path)) {
+    if (
+      ua === undefined ||
+      !userAgentPattern.test(ua) ||
+      excludeUrlPattern.test(req.path)
+    ) {
       next();
       return;
     }
-    const incomingUrl =
-      req.protocol + '://' + req.get('host') + req.originalUrl;
+    const forwardedHost = forwardedHostHeader && req.get(forwardedHostHeader);
+    const host =
+      forwardedHost && allowedForwardedHosts.includes(forwardedHost)
+        ? forwardedHost
+        : req.get('host');
+    const incomingUrl = req.protocol + '://' + host + req.originalUrl;
     let renderUrl = proxyUrl + encodeURIComponent(incomingUrl);
     if (injectShadyDom) {
       renderUrl += '?wc-inject-shadydom=true';
@@ -121,7 +187,8 @@ export function makeMiddleware(options: Options): express.Handler {
     request({ url: renderUrl, timeout }, (e) => {
       if (e) {
         console.error(
-          `[rendertron middleware] ${e.code} error fetching ${renderUrl}`);
+          `[rendertron middleware] ${e.code} error fetching ${renderUrl}`
+        );
         next();
       }
     }).pipe(res);

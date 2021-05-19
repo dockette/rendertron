@@ -1,4 +1,4 @@
-FROM node:13-slim
+FROM node:15-slim
 
 RUN apt update && apt dist-upgrade -y && \
 	apt install -y wget gnupg2 && \
