@@ -9,7 +9,7 @@
   },
   "require-dev": {
     "contributte/dev": "^0.3",
-    "ninjify/nunjuck": "^0.3.0"
+    "ninjify/nunjuck": "^0.4.0"
   },
   "autoload": {
     "psr-4": {

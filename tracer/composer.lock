@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb58317043665bd0483fe1044ba3f4e1",
+    "content-hash": "961f0f3de79b74a8e6c8ff23961b4d4c",
     "packages": [
         {
             "name": "contributte/di",
@@ -1446,20 +1446,24 @@
         },
         {
             "name": "nette/tester",
-            "version": "v2.3.1",
+            "version": "v2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "c3bd1b2c1074dfb957288b716c06aa7b4b5295a8"
+                "reference": "451f6e97b117797e817446de8d19fe06e54fd33f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/c3bd1b2c1074dfb957288b716c06aa7b4b5295a8",
-                "reference": "c3bd1b2c1074dfb957288b716c06aa7b4b5295a8",
+                "url": "https://api.github.com/repos/nette/tester/zipball/451f6e97b117797e817446de8d19fe06e54fd33f",
+                "reference": "451f6e97b117797e817446de8d19fe06e54fd33f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2 <8.3"
+            },
+            "require-dev": {
+                "ext-simplexml": "*",
+                "phpstan/phpstan": "^1.0"
             },
             "bin": [
                 "src/tester"
@@ -1478,13 +1482,17 @@
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
+                "GPL-2.0-only",
+                "GPL-3.0-only"
             ],
             "authors": [
                 {
                     "name": "David Grudl",
                     "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Miloslav Hůla",
+                    "homepage": "https://github.com/milo"
                 },
                 {
                     "name": "Nette Community",
@@ -1505,32 +1513,40 @@
                 "testing",
                 "unit"
             ],
-            "time": "2019-11-19T13:19:16+00:00"
+            "support": {
+                "issues": "https://github.com/nette/tester/issues",
+                "source": "https://github.com/nette/tester/tree/v2.4.3"
+            },
+            "time": "2022-08-29T16:39:38+00:00"
         },
         {
             "name": "ninjify/nunjuck",
-            "version": "v0.3.0",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ninjify/nunjuck.git",
-                "reference": "24c3fc3dcfed14ba2655e1c05460e0802efe2182"
+                "reference": "4768a7db2f76ab662061b977a05b5aebc2b7bb45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ninjify/nunjuck/zipball/24c3fc3dcfed14ba2655e1c05460e0802efe2182",
-                "reference": "24c3fc3dcfed14ba2655e1c05460e0802efe2182",
+                "url": "https://api.github.com/repos/ninjify/nunjuck/zipball/4768a7db2f76ab662061b977a05b5aebc2b7bb45",
+                "reference": "4768a7db2f76ab662061b977a05b5aebc2b7bb45",
                 "shasum": ""
             },
             "require": {
-                "nette/tester": "^2.3",
-                "php": ">=7.1"
+                "nette/tester": "^2.4.3",
+                "php": ">=7.2"
             },
             "require-dev": {
                 "janmarek/mockista": "^1.1.0",
                 "mockery/mockery": "^1.2.2",
-                "nette/di": "~2.4.15",
-                "nette/robot-loader": "~3.2.0",
-                "ninjify/qa": "^0.10"
+                "nette/di": "~3.0.0",
+                "nette/robot-loader": "~3.2",
+                "ninjify/qa": "^0.12",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-nette": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12"
             },
             "suggest": {
                 "janmarek/mockista": "to use BaseMockistaTestCase",
@@ -1544,16 +1560,16 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.3.x-dev"
+                    "dev-master": "0.4.x-dev"
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Ninjify\\Nunjuck\\": "src"
-                },
                 "files": [
                     "src/functions.php"
-                ]
+                ],
+                "psr-4": {
+                    "Ninjify\\Nunjuck\\": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1572,7 +1588,11 @@
                 "php",
                 "tester"
             ],
-            "time": "2019-10-02T10:58:18+00:00"
+            "support": {
+                "issues": "https://github.com/ninjify/nunjuck/issues",
+                "source": "https://github.com/ninjify/nunjuck/tree/v0.4.0"
+            },
+            "time": "2023-03-14T13:58:17+00:00"
         }
     ],
     "aliases": [],
@@ -1585,5 +1605,5 @@
         "ext-simplexml": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
