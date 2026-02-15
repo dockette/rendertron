@@ -20,3 +20,7 @@ docker run -it --rm -p 3000:3000 dockette/rendertron
 ```
 
 ![Screenshot](.docs/screenshot.png)
+
+## Maintenance
+
+See [how to contribute](https://github.com/dockette/.github/blob/master/CONTRIBUTING.md) to this package.
