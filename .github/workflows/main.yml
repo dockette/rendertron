@@ -5,6 +5,9 @@ on:
     branches: [ master ]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     name: Lint
@@ -14,8 +17,8 @@ jobs:
         shell: bash
         working-directory: rendertron
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 15
       - run: npm ci
@@ -30,8 +33,8 @@ jobs:
         shell: bash
         working-directory: rendertron/middleware
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 15
       - run: npm ci
