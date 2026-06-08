@@ -1,17 +1,17 @@
-FROM node:15-slim
+FROM node:20-bookworm-slim
 
-RUN apt update && apt dist-upgrade -y && \
-	apt install -y wget gnupg2 && \
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list && \
-    apt-get update && apt-get -y install google-chrome-stable libxss1
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+
+RUN apt-get update && apt-get dist-upgrade -y && \
+    apt-get install -y --no-install-recommends chromium ca-certificates && \
+    rm -Rf /var/lib/apt/lists/*
 
 ADD ./ /srv
 
-RUN npm --prefix /srv install && \
+RUN npm --prefix /srv ci && \
     npm --prefix /srv run build && \
-    rm -Rf /tmp/* && \
-    rm -Rf /var/lib/apt/lists/*
+    rm -Rf /tmp/*
 
 WORKDIR /srv
 

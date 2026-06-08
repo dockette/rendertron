@@ -20,6 +20,7 @@
 'use strict';
 
 import Koa from 'koa';
+import { OutgoingHttpHeaders } from 'http';
 import { Config, ConfigManager } from './config';
 
 import { Datastore } from '@google-cloud/datastore';
@@ -57,8 +58,8 @@ export class DatastoreCache {
   async cacheContent(
     // eslint-disable-next-line @typescript-eslint/ban-types
     key: object,
-    headers: Record<string, string>,
-    payload: Buffer
+    headers: OutgoingHttpHeaders,
+    payload: Koa.Context['body']
   ) {
     const now = new Date();
     // query datastore to see if we are over the max number of allowed entries, and max entries isn't disabled with a value of -1 and remove over quota, removes oldest first

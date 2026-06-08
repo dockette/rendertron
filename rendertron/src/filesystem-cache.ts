@@ -242,7 +242,7 @@ export class FilesystemCache {
           ctx.set(response.header);
           ctx.set('x-rendertron-cached', content.saved.toUTCString());
           ctx.status = response.status;
-          let payload: string | { type?: string } = content.payload;
+          let payload: string | { type?: string; data?: number[] } = content.payload;
           try {
             payload = JSON.parse(content.payload);
           } catch (e) {
@@ -254,7 +254,7 @@ export class FilesystemCache {
               typeof payload === 'object' &&
               payload.type === 'Buffer'
             ) {
-              ctx.body = Buffer.from(payload);
+              ctx.body = Buffer.from(payload.data || []);
             } else {
               ctx.body = payload;
             }
