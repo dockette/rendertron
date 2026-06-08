@@ -20,6 +20,7 @@
 'use strict';
 
 import Koa from 'koa';
+import { OutgoingHttpHeaders } from 'http';
 import { Config, ConfigManager } from './config';
 
 type CacheEntry = {
@@ -40,8 +41,8 @@ export class MemoryCache {
 
   cacheContent(
     key: string,
-    headers: { [key: string]: string },
-    payload: Buffer
+    headers: OutgoingHttpHeaders,
+    payload: Koa.Context['body']
   ) {
     // if the cache gets too big, we evict the least recently used entry (i.e. the first value in the map)
     if (

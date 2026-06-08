@@ -22,6 +22,10 @@ export class Rendertron {
   private port = process.env.PORT || null;
   private host = process.env.HOST || null;
 
+  private getQueryString(value: string | string[] | undefined) {
+    return Array.isArray(value) ? value[0] : value;
+  }
+
   async createRenderer(config: Config) {
     const browser = await puppeteer.launch({ args: config.puppeteerArgs });
 
@@ -153,7 +157,7 @@ export class Rendertron {
     const serialized = await this.renderer.serialize(
       url,
       mobileVersion,
-      ctx.query.timezoneId
+      this.getQueryString(ctx.query.timezoneId)
     );
 
     for (const key in this.config.headers) {
@@ -192,7 +196,8 @@ export class Rendertron {
         url,
         mobileVersion,
         dimensions,
-        ctx.query.timezoneId
+        undefined,
+        this.getQueryString(ctx.query.timezoneId)
       );
 
       for (const key in this.config.headers) {

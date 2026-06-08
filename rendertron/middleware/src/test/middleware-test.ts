@@ -26,8 +26,8 @@ import * as rendertron from '../middleware';
  */
 async function listen(app: express.Application): Promise<string> {
   return new Promise<string>((resolve: (url: string) => void) => {
-    const server = app.listen(/* random */ 0, 'localhost', () => {
-      resolve(`http://localhost:${(server.address() as net.AddressInfo).port}`);
+    const server = app.listen(/* random */ 0, '127.0.0.1', () => {
+      resolve(`http://127.0.0.1:${(server.address() as net.AddressInfo).port}`);
     });
   });
 }
