@@ -1,6 +1,8 @@
 name: Docker
 
 on:
+  workflow_dispatch:
+
   push:
     branches: master
 
@@ -49,3 +51,12 @@ jobs:
           push: true
           tags: dockette/rendertron:${{ matrix.tag }}
           platforms: linux/amd64 # linux/arm64
+
+  docs:
+    name: "Docs"
+    needs: docker
+    if: github.ref == 'refs/heads/master'
+    uses: dockette/.github/.github/workflows/dockerhub-description.yml@master
+    secrets: inherit
+    with:
+      image: "dockette/rendertron"
