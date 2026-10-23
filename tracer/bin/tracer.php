@@ -1,6 +1,5 @@
 <?php declare(strict_types = 1);
 
-use Contributte\Utils\Strings;
 use Dockette\Rendertron\Tracer\Tracer;
 use Tracy\Debugger;
 
@@ -22,10 +21,10 @@ $tracer = new Tracer([
 ]);
 
 foreach ($env as $key => $value) {
-	if (Strings::startsWith($key, 'TRACER_SRC_SITEMAP')) {
+	if (str_starts_with($key, 'TRACER_SRC_SITEMAP')) {
 		$tracer->addResourceSitemap($value);
 	}
-	if (Strings::startsWith($key, 'TRACER_SRC_SITEMAP_LIST')) {
+	if (str_starts_with($key, 'TRACER_SRC_SITEMAP_LIST')) {
 		$tracer->addResourceSitemapList($value);
 	}
 }

@@ -1,4 +1,4 @@
-FROM php:7.4-cli-alpine
+FROM php:8.4-cli-alpine
 
 LABEL maintainer="Milan Sulc <sulcmil@gmail.com>"
 
