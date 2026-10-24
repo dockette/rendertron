@@ -1,3 +1,5 @@
+VERSION:=$(shell cat VERSION)
+
 build-rendertron:
 	docker build -t dockette/rendertron ./rendertron
 
@@ -32,3 +34,13 @@ run-tracer:
 		-e TRACER_SRC_SITEMAP_1=https://example.com/sitemaps/pages.xml \
 		-e TRACER_SRC_SITEMAP_2=https://example.com/sitemaps/pages2.xml \
 		dockette/rendertron:tracer
+
+.PHONY: version
+version:
+	@echo ${VERSION}
+
+.PHONY: release
+release:
+	@date -u +%Y.%m.%d > VERSION
+	@echo "VERSION: ${VERSION} -> $$(cat VERSION)"
+	@echo "next: git commit -am \"Release: $$(cat VERSION)\" && git push"
