@@ -6,7 +6,7 @@
     "tracy/tracy": "^2.10"
   },
   "require-dev": {
-    "contributte/dev": "^0.3",
+    "contributte/dev": "^0.6",
     "ninjify/nunjuck": "^0.3.0"
   },
   "autoload": {
